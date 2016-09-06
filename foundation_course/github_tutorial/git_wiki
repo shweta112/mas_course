@@ -1,0 +1,7 @@
+git status
+git add <file_name>
+git commit -m '<commit_msg_if_small>'
+# Just use git commit to enter longer messages, multiline messages or messages with formating
+git remote -v
+git push origin master
+# Pay attention to commands suggested by git after execution of every command

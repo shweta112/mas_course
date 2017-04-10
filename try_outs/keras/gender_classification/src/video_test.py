@@ -5,6 +5,7 @@ from statistics import mode
 
 detection_model_path = '../trained_models/haarcascade_frontalface_default.xml'
 classification_model_path = '../trained_models/model_CNN.hdf5'
+#classification_model_path = '../trained_models/simpler_Combined_CNN.hdf5'
 frame_window = 10
 gender_labels = {0:'Female',1:'Male'}
 
@@ -20,10 +21,10 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_detection.detectMultiScale(gray,1.3,5)
     for (x,y,w,h) in faces:
-        cv2.rectangle(gray,(x,y),(x+w,y+h),(255,0,0),2)
-        face = gray[y:y+h,x:x+w]
+        cv2.rectangle(gray,(x - (int)(0.2*w), y - (int)(0.3*h)),(x + (int)(1.2*w), y + (int)(1.2*h)),(255,0,0),2)
+        face = gray[y - (int)(0.3*h) : y + (int)(1.2*h), x - (int)(0.2*w) : x + (int)(1.2*w)]
         try:
-            face = cv2.resize(face,(64,64))
+            face = cv2.resize(face, (64, 64))
         except:
             continue
         face = np.expand_dims(face,0)

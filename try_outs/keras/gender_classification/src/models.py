@@ -8,12 +8,12 @@ def model_CNN(input_shape, num_classes):
     model = Sequential()
 
     model.add(Convolution2D(16, 7, 4, border_mode='same',
-                            input_shape=input_shape))
+                        input_shape=input_shape))
     model.add(PReLU())
     model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), border_mode='same'))
     model.add(BatchNormalization())
 
-    model.add(Convolution2D(32, 5, 2, border_mode='same'))
+    model.add(Convolution2D(32, 5, 3, border_mode='same'))
     model.add(PReLU())
     model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), border_mode='same'))
     model.add(BatchNormalization())
